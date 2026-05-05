@@ -91,10 +91,6 @@ ls -la
 
 ---
 
-## Flag
-
----
-
 ## Key Lesson
 This machine demonstrates anonymous FTP — one of the most common 
 misconfigurations found during real penetration tests and bug bounty 
