@@ -25,13 +25,13 @@ nmap -sV -sC 10.129.X.X -oN nmap.txt
 Nmap revealed port 21 open running FTP with anonymous login allowed. 
 The default Nmap scripts automatically detected and reported the 
 anonymous FTP misconfiguration.
-
+```bash
 21/tcp open  ftp  vsftpd 3.0.3
 
 ftp-anon: Anonymous FTP login allowed (FTP code 230)
 
 -rw-r--r-- 1 0 0 32 Jun 04 2021 flag.txt
-
+```
 Two important findings from the Nmap output — anonymous login is 
 allowed, and a file called flag.txt is already visible in the 
 directory listing.
