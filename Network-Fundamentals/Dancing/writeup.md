@@ -25,13 +25,13 @@ nmap -sV -sC 10.129.X.X -oN nmap.txt
 Nmap revealed multiple ports open typical of a Windows machine. 
 The most interesting findings were ports 135, 139, and 445 — 
 all associated with SMB and Windows networking services.
-
+```bash
 135/tcp open  msrpc
 
 139/tcp open  netbios-ssn
 
 445/tcp open  microsoft-ds
-
+```
 Port 445 is the modern SMB port. This is the primary target for 
 enumeration.
 
