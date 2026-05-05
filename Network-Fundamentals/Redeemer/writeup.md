@@ -150,7 +150,4 @@ The fix is to always set a strong password in redis.conf using
 the requirepass directive, bind Redis to localhost only using 
 bind 127.0.0.1, and never expose Redis directly to the internet 
 or untrusted networks.
-
----
-
-Replace `10.129.X.X` with your actual IP and paste your real flag. Want me to continue with Responder?
+```
