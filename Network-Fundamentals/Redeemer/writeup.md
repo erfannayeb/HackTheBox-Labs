@@ -25,9 +25,9 @@ nmap -sV -sC -p- 10.129.X.X -oN nmap.txt
 Note: `-p-` was necessary here because Redis runs on port 6379 
 which is not in Nmap's default top 1000 ports. Without scanning 
 all ports the service would have been missed entirely.
-
+```bash
 6379/tcp open  redis  Redis key-value store 5.0.7
-
+```
 Port 6379 is the default Redis port. Redis is an in-memory 
 key-value database commonly used for caching and session storage 
 in web applications.
