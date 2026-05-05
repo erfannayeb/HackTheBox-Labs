@@ -1,4 +1,3 @@
-```markdown
 # Redeemer
 
 **Platform:** HackTheBox — Starting Point  
@@ -27,9 +26,7 @@ Note: `-p-` was necessary here because Redis runs on port 6379
 which is not in Nmap's default top 1000 ports. Without scanning 
 all ports the service would have been missed entirely.
 
-```
 6379/tcp open  redis  Redis key-value store 5.0.7
-```
 
 Port 6379 is the default Redis port. Redis is an in-memory 
 key-value database commonly used for caching and session storage 
@@ -114,14 +111,6 @@ achieve remote code execution by writing files directly to disk.
 # Then connect via SSH
 ssh -i id_rsa root@10.129.X.X
 ```
-
----
-
-## Flag
-```
-redacted
-```
-
 ---
 
 ## Key Lesson
@@ -150,4 +139,3 @@ The fix is to always set a strong password in redis.conf using
 the requirepass directive, bind Redis to localhost only using 
 bind 127.0.0.1, and never expose Redis directly to the internet 
 or untrusted networks.
-```
