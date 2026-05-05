@@ -20,9 +20,14 @@ access to the system.
 
 ```bash
 nmap -sV -sC 10.129.X.X -oN nmap.txt
+
+23/tcp open  telnet  Linux telnetd
 ```
 
 Nmap revealed port 23 open running Telnet. This is a legacy remote 
+access protocol that transmits everything including credentials in 
+cleartext — a significant security risk in any environment. 
+
 ---
 
 ## Enumeration
