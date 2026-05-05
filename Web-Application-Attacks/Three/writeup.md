@@ -64,12 +64,6 @@ cat /root/flag.txt
 
 ---
 
-## Flag
-access protocol that transmits everything including credentials in 
-cleartext — a significant security risk in any environment.
-
----
-
 ## Key Lesson
 This machine demonstrates one of the most common misconfigurations 
 found on legacy systems and IoT devices — Telnet left enabled with 
