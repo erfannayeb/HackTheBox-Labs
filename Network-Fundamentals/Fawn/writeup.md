@@ -27,8 +27,8 @@ The default Nmap scripts automatically detected and reported the
 anonymous FTP misconfiguration.
 
 21/tcp open  ftp  vsftpd 3.0.3
-| ftp-anon: Anonymous FTP login allowed (FTP code 230)
-| -rw-r--r-- 1 0 0 32 Jun 04 2021 flag.txt
+ftp-anon: Anonymous FTP login allowed (FTP code 230)
+-rw-r--r-- 1 0 0 32 Jun 04 2021 flag.txt
 
 Two important findings from the Nmap output — anonymous login is 
 allowed, and a file called flag.txt is already visible in the 
